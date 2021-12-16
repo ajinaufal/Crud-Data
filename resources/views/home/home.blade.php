@@ -85,8 +85,7 @@
                                             <td class="align-middle text-center">
                                                 <a href="/delete-data/{{ $item->id }}" class="btn btn-danger btn-sm my-auto">Hapus</a>
                                                 <a href="/edit-data/{{ $item->id }}" class="btn btn-warning btn-sm my-auto">Edit</a>
-                                                <a href="/laporan-data/{{ $item->id }}"
-                                                    class="btn btn-secondary btn-sm my-auto">Laporan</a>
+                                                <a href="/laporan-data/{{ $item->id }}" class="btn btn-secondary btn-sm my-auto">Laporan</a>
                                             </td>
                                         </tr>
                                     @endforeach

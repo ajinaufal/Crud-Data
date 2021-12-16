@@ -125,4 +125,41 @@ class crudController extends Controller
         $nilai = nilai::findorfail($id)->delete();
         return back()->with('success', 'Data Berhasil Dihapus!');
     }
+
+    public function laporan($id)
+    {
+        $data = nilai::findorfail($id);
+        $intelegensi = (((40 / 100) * $data->x) + ((60 / 100) * ($data->y / 2)));
+        if ($intelegensi >= 1 && $intelegensi <= 4) {
+            $intelegensi = 1;
+        } elseif ($intelegensi > 4 && $intelegensi <= 8) {
+            $intelegensi = 2;
+        } elseif ($intelegensi > 8 && $intelegensi <= 12) {
+            $intelegensi = 3;
+        } elseif ($intelegensi > 12 && $intelegensi <= 16) {
+            $intelegensi = 4;
+        } elseif ($intelegensi > 16 && $intelegensi <= 20) {
+            $intelegensi = 5;
+        }
+
+        $ability = (((30 / 100) * $data->z) + ((70 / 100) * ($data->w / 2)));
+        if ($ability >= 1 && $ability <= 2.9) {
+            $ability = 1;
+        } elseif ($ability >2.9 && $ability <= 5.8) {
+            $ability = 2;
+        } elseif ($ability >5.8  && $ability <=8.7 ) {
+            $ability = 3;
+        } elseif ($ability >8.7  && $ability <=11.6 ) {
+            $ability = 4;
+        } elseif ($ability >11.6  && $ability <=14.5 ) {
+            $ability = 5;
+        }
+
+        return view('home.laporan', [
+            'title' => 'Laporan',
+            'data'  => $data,
+            'ability' => $ability,
+            'intelegensi' => $intelegensi,
+        ]);
+    }
 }
